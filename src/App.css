@@ -1,3 +1,54 @@
+:root {
+	--hq-background-color: #2a2a2a;
+	--hq-text-color: #fff;
+	--hq-selected-color: #2d7d46;
+	--hq-selected-text-color: #fff;
+	--hq-border-color: #ddd;
+	--hq-border-radius: 4px;
+	--hq-heading-font-family: "Bahiana", cursive;
+	--hq-body-font-family: "Roboto", sans-serif;
+	--hq-font-weight: 400;
+	--hq-font-style: normal;
+}
+
+body {
+	font-family: var(--hq-body-font-family);
+	background-color: var(--hq-background-color);
+	color: var(--hq-text-color);
+	line-height: 1.2;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--hq-heading-font-family);
+}
+
+h1 {
+	line-height: 0.9;
+	font-family: "Bahiana", cursive;
+	font-size: clamp(3.6rem, 10vw, 5rem);
+	font-weight: 400;
+	font-style: normal;
+	margin: 0 0 2rem 0;
+	padding: 0;
+	overflow-wrap: break-word;
+	max-width: 100%;
+}
+
+h2 {
+	margin-top: 3rem;
+	margin-bottom: 1.4rem;
+	font-size: 2.4rem;
+}
+
+p {
+	margin-bottom: 1rem;
+}
+
 .app-loading {
 	text-align: center;
 	margin-top: 3rem;
@@ -14,36 +65,77 @@
 }
 
 #root {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	border: 0;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+	padding: 2rem 1rem 0 1rem;
+	text-align: center;
+
+	@media screen and (min-width: 600px) {
+		display: flex;
+		align-items: center;
+		height: 100vh;
+		justify-content: center;
+		max-width: 1200px;
+		width: 100%;
+		margin-right: auto;
+		margin-left: auto;
+		border: 0;
+		padding-top: 0;
+	}
 }
 
-h2 {
-	margin-top: 3rem;
-	margin-bottom: 1.4rem;
+main {
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+}
+
+.container {
+	min-width: 0;
 }
 
 .grid {
-	display: flex;
-	flex-wrap: wrap;
+	display: grid;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+	box-sizing: border-box;
+	/* grid-template-columns: repeat(10, 1fr); */
+	grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr));
 	gap: 3px;
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
 
+/* Grid items may not shrink below content by default; allow equal columns to fit. */
+.grid .hq {
+	min-width: 0;
+}
+
 .hq-button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 3rem;
-	height: 3rem;
+	font-size: 1rem;
+	font-weight: 600;
+	/* width: 3rem;
+	height: 3rem; */
 	border: 0;
 	background-color: #f0f0f0;
 	color: #000;
+
+	/* @media screen and (max-width: 600px) { */
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1 / 1;
+	/* } */
+}
+
+button {
+	color: var(--hq-text-color);
+	text-transform: uppercase;
 }
 
 .hq-button.selected {

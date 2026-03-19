@@ -58,7 +58,7 @@ function App() {
 				user_id: user.id,
 				purchased_editions: next,
 			},
-			{ onConflict: "user_id" }
+			{ onConflict: "user_id" },
 		);
 
 		if (error) {
@@ -78,39 +78,37 @@ function App() {
 
 	return (
 		<>
-			<header>
-				<h1>"The Savage Sword of Conan" - HQ Manager</h1>
-				<p>Total HQs: {totalHQs}</p>
-				<p>Purchased HQs: {purchasedHQsTotal}</p>
-				<button
-					type="button"
-					className="sign-out"
-					onClick={() => signOut()}
-				>
-					Sign out
-				</button>
-			</header>
+			<div className="container">
+				<header>
+					<h1>"The Savage Sword of Conan" - HQ Manager</h1>
+					<p>Total HQs: {totalHQs}</p>
+					<p>Purchased HQs: {purchasedHQsTotal}</p>
+					<button type="button" className="sign-out" onClick={() => signOut()}>
+						Sign out
+					</button>
+				</header>
 
-			<main>
-				<h2>HQs</h2>
-				{loadingCollection ? (
-					<p>Loading your collection…</p>
-				) : (
-					<ul className="grid">
-						{editionNumbers.map((editionNumber) => (
-							<li key={editionNumber} className="hq">
-								<button
-									type="button"
-									className={`hq-button ${purchasedHQs.includes(editionNumber) ? "selected" : ""}`}
-									onClick={() => handleToggle(editionNumber)}
-								>
-									{editionNumber}
-								</button>
-							</li>
-						))}
-					</ul>
-				)}
-			</main>
+				<main>
+					<h2>HQs</h2>
+					{loadingCollection ? (
+						<p>Loading your collection…</p>
+					) : (
+						<ul className="grid">
+							{editionNumbers.map((editionNumber) => (
+								<li key={editionNumber} className="hq">
+									<button
+										type="button"
+										className={`hq-button ${purchasedHQs.includes(editionNumber) ? "selected" : ""}`}
+										onClick={() => handleToggle(editionNumber)}
+									>
+										{editionNumber}
+									</button>
+								</li>
+							))}
+						</ul>
+					)}
+				</main>
+			</div>
 		</>
 	);
 }
