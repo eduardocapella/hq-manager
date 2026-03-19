@@ -7,6 +7,7 @@ import "./App.css";
 function App() {
 	const { user, session, loading, signOut } = useAuth();
 	const totalHQs = 75;
+	const price = 54.9;
 	const [purchasedHQs, setPurchasedHQs] = useState<number[]>([]);
 	const [loadingCollection, setLoadingCollection] = useState(true);
 
@@ -75,6 +76,12 @@ function App() {
 	}
 
 	const purchasedHQsTotal = purchasedHQs.length;
+	const missingCount = totalHQs - purchasedHQsTotal;
+	const totalToPay = price * missingCount;
+	const totalToPayFormatted = new Intl.NumberFormat("pt-BR", {
+		style: "currency",
+		currency: "BRL",
+	}).format(totalToPay);
 
 	return (
 		<>
@@ -83,6 +90,11 @@ function App() {
 					<h1>"The Savage Sword of Conan" - HQ Manager</h1>
 					<p>Total HQs: {totalHQs}</p>
 					<p>Purchased HQs: {purchasedHQsTotal}</p>
+					<p>Missing HQs: {missingCount}</p>
+					<p>
+						To complete the collection, you need to buy {missingCount} more HQs
+						for {totalToPayFormatted}
+					</p>
 					<button type="button" className="sign-out" onClick={() => signOut()}>
 						Sign out
 					</button>
