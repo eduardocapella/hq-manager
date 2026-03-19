@@ -1,3 +1,18 @@
+.app-loading {
+	text-align: center;
+	margin-top: 3rem;
+}
+
+.sign-out {
+	margin-top: 0.5rem;
+	padding: 0.4rem 0.8rem;
+	border: 1px solid #999;
+	border-radius: 4px;
+	background: transparent;
+	cursor: pointer;
+	font-size: 0.9rem;
+}
+
 #root {
 	display: flex;
 	justify-content: center;
@@ -34,4 +49,79 @@ h2 {
 .hq-button.selected {
 	background-color: #2d7d46;
 	color: #fff;
+}
+
+/* Login form */
+.login-form {
+	max-width: 22rem;
+	margin: 2rem auto;
+	padding: 1.5rem;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	background: #fafafa;
+}
+
+.login-form h2 {
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+}
+
+.login-form p {
+	margin-bottom: 1rem;
+	color: #555;
+}
+
+.login-form .login-hint {
+	font-size: 0.9rem;
+	margin-bottom: 1rem;
+	padding: 0.5rem;
+	background: #f0f0f0;
+	border-radius: 4px;
+}
+
+.login-form label {
+	display: block;
+	margin-top: 0.75rem;
+	margin-bottom: 0.25rem;
+	font-weight: 600;
+}
+
+.login-form input {
+	width: 100%;
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.login-form button {
+	display: block;
+	width: 100%;
+	margin-top: 1rem;
+	padding: 0.6rem;
+	border: 0;
+	border-radius: 4px;
+	background-color: #2d7d46;
+	color: #fff;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.login-form button.login-toggle {
+	margin-top: 0.5rem;
+	background: transparent;
+	color: #333;
+	font-weight: normal;
+}
+
+.login-form .login-error {
+	margin-top: 0.5rem;
+	color: #c00;
+	font-size: 0.9rem;
+}
+
+.login-form .login-message {
+	margin-top: 0.5rem;
+	color: #2d7d46;
+	font-size: 0.9rem;
 }
