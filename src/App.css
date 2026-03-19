@@ -15,7 +15,7 @@ body {
 	font-family: var(--hq-body-font-family);
 	background-color: var(--hq-background-color);
 	color: var(--hq-text-color);
-	line-height: 1.2;
+	line-height: 1.4;
 }
 
 h1,
@@ -37,6 +37,24 @@ h1 {
 	padding: 0;
 	overflow-wrap: break-word;
 	max-width: 100%;
+}
+
+#header-stats {
+	display: flex;
+	list-style: none;
+	gap: 24px;
+	margin-bottom: 16px;
+	justify-content: center;
+	font-size: 22px;
+
+	b {
+		font-size: 1.2em;
+	}
+
+	@media screen and (max-width: 600px) {
+		font-size: 18px;
+		flex-wrap: wrap;
+	}
 }
 
 h2 {

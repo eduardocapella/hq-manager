@@ -88,12 +88,21 @@ function App() {
 			<div className="container">
 				<header>
 					<h1>"The Savage Sword of Conan" - HQ Manager</h1>
-					<p>Total HQs: {totalHQs}</p>
-					<p>Purchased HQs: {purchasedHQsTotal}</p>
-					<p>Missing HQs: {missingCount}</p>
+					<ul id="header-stats">
+						<li>
+							Total: <b>{totalHQs}</b>
+						</li>
+						<li>
+							Purchased: <b>{purchasedHQsTotal}</b>
+						</li>
+						<li>
+							Missing: <b>{missingCount}</b>
+						</li>
+					</ul>
 					<p>
-						To complete the collection, you need to buy {missingCount} more HQs
-						for {totalToPayFormatted}
+						Estimate cost to complete the collection:
+						<br />
+						{missingCount} more HQs for <strong>{totalToPayFormatted}</strong>
 					</p>
 					<button type="button" className="sign-out" onClick={() => signOut()}>
 						Sign out
