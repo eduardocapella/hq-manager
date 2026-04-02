@@ -10,8 +10,12 @@ function App() {
 	const price = 54.9;
 	const [purchasedHQs, setPurchasedHQs] = useState<number[]>([]);
 	const [loadingCollection, setLoadingCollection] = useState(true);
+	const [filterMissingOnly, setFilterMissingOnly] = useState(false);
 
 	const editionNumbers = Array.from({ length: totalHQs }, (_, i) => i + 1);
+	const visibleEditionNumbers = filterMissingOnly
+		? editionNumbers.filter((n) => !purchasedHQs.includes(n))
+		: editionNumbers;
 
 	// Load collection from Supabase when user is logged in.
 	useEffect(() => {
@@ -114,19 +118,46 @@ function App() {
 					{loadingCollection ? (
 						<p>Loading your collection…</p>
 					) : (
-						<ul className="grid">
-							{editionNumbers.map((editionNumber) => (
-								<li key={editionNumber} className="hq">
-									<button
-										type="button"
-										className={`hq-button ${purchasedHQs.includes(editionNumber) ? "selected" : ""}`}
-										onClick={() => handleToggle(editionNumber)}
-									>
-										{editionNumber}
-									</button>
-								</li>
-							))}
-						</ul>
+						<>
+							<fieldset className="hq-filter-bar">
+								<legend className="hq-filter-legend">Filter editions</legend>
+								<button
+									type="button"
+									className={`hq-filter-btn${!filterMissingOnly ? " is-active" : ""}`}
+									onClick={() => setFilterMissingOnly(false)}
+									aria-pressed={!filterMissingOnly}
+								>
+									All
+								</button>
+								<button
+									type="button"
+									className={`hq-filter-btn${filterMissingOnly ? " is-active" : ""}`}
+									onClick={() => setFilterMissingOnly(true)}
+									aria-pressed={filterMissingOnly}
+								>
+									Missing only
+								</button>
+							</fieldset>
+							{visibleEditionNumbers.length === 0 ? (
+								<p className="hq-filter-empty">
+									You have every edition marked — nothing missing.
+								</p>
+							) : (
+								<ul className="grid">
+									{visibleEditionNumbers.map((editionNumber) => (
+										<li key={editionNumber} className="hq">
+											<button
+												type="button"
+												className={`hq-button ${purchasedHQs.includes(editionNumber) ? "selected" : ""}`}
+												onClick={() => handleToggle(editionNumber)}
+											>
+												{editionNumber}
+											</button>
+										</li>
+									))}
+								</ul>
+							)}
+						</>
 					)}
 				</main>
 			</div>

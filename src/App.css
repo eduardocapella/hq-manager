@@ -63,6 +63,51 @@ h2 {
 	font-size: 2.4rem;
 }
 
+.hq-filter-bar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	justify-content: center;
+	margin: 0 0 1.25rem;
+	padding: 0;
+	border: 0;
+	min-inline-size: 0;
+}
+
+.hq-filter-legend {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.hq-filter-btn {
+	padding: 0.45rem 0.9rem;
+	border: 1px solid #999;
+	border-radius: var(--hq-border-radius);
+	background: transparent;
+	cursor: pointer;
+	font-size: 0.85rem;
+	font-family: var(--hq-body-font-family);
+	text-transform: none;
+}
+
+.hq-filter-btn.is-active {
+	border-color: var(--hq-selected-color);
+	background-color: var(--hq-selected-color);
+	color: var(--hq-selected-text-color);
+}
+
+.hq-filter-empty {
+	margin-top: 0.5rem;
+	color: #ccc;
+}
+
 p {
 	margin-bottom: 1rem;
 }
